@@ -39,9 +39,9 @@ class Movie
   // {
   //   return $this->genres;
   // }
-  public function isSuitableForMinors($minimumAge)
+  public function calculateAge()
   {
-    return $this->rating <= $minimumAge;
+    return date("Y") - $this->year;
   }
 }
 
@@ -64,7 +64,7 @@ $movie2 = new Movie("The Godfather", 1972, 9.2, array("Crime", "Drama", "Thrille
 <body>
   <div class="container">
     <div class="row">
-      <di class="col">
+      <div class="col">
         <?php
         // echo "<h1>" . $movie1->getTitle() . "</h1>";
         // echo "<div>Year: " . $movie1->getYear() . "</div>";
@@ -77,9 +77,10 @@ $movie2 = new Movie("The Godfather", 1972, 9.2, array("Crime", "Drama", "Thrille
         echo "<div>Rating: " . $movie1->rating . "</div>";
         // implode converte array to string
         echo "<div>Genres: " . implode(", ", $movie1->genres) . "</div>";
+        echo "<div>Età: " . $movie1->calculateAge() . "</div>";
         ?>
-      </di>
-      <di class="col">
+      </div>
+      <div class="col">
         <?php
         // echo "<h1>" . $movie2->getTitle() . "</h1>";
         // echo "<div>Year: " . $movie2->getYear() . "</div>";
@@ -92,8 +93,9 @@ $movie2 = new Movie("The Godfather", 1972, 9.2, array("Crime", "Drama", "Thrille
         echo "<div>Rating: " . $movie2->rating . "</div>";
         // implode converte array to string
         echo "<div>Genres: " . implode(", ", $movie2->genres) . "</div>";
+        echo "<div>Età: " . $movie2->calculateAge() . "</div>";
         ?>
-      </di>
+      </div>
     </div>
   </div>
 </body>
