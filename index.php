@@ -10,14 +10,17 @@ class Movie
   public $year;
   public $rating;
   public $genres;
+  public $image;
 
 
-  public function __construct($title, $year, $rating, $genres)
+
+  public function __construct($title, $year, $rating, $genres, $image)
   {
     $this->title = $title;
     $this->year = $year;
     $this->rating = $rating;
     $this->genres = $genres;
+    $this->image = $image;
   }
 
   // public function getTitle()
@@ -45,8 +48,8 @@ class Movie
   }
 }
 
-$movie1 = new Movie("The Shawshank Redemption", 1994, 9.3, array("Drama", "Crime"));
-$movie2 = new Movie("The Godfather", 1972, 9.2, array("Crime", "Drama", "Thriller"));
+$movie1 = new Movie("The Shawshank Redemption", 1994, 9.3, array("Drama", "Crime"), "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg");
+$movie2 = new Movie("The Godfather", 1972, 9.2, array("Crime", "Drama", "Thriller"), "https://www.lab111.nl/wp-content/uploads/2022/01/TGF50_INTL_DIGITAL_PAYOFF_1_SHEET__NED.jpg");
 ?>
 
 <!DOCTYPE html>
@@ -62,9 +65,10 @@ $movie2 = new Movie("The Godfather", 1972, 9.2, array("Crime", "Drama", "Thrille
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid p-2">
     <div class="row">
       <div class="col">
+        <img src="<?php echo $movie1->image ?>" alt="" class="movie1" style="width: 200px;">
         <?php
         // echo "<h1>" . $movie1->getTitle() . "</h1>";
         // echo "<div>Year: " . $movie1->getYear() . "</div>";
@@ -72,15 +76,16 @@ $movie2 = new Movie("The Godfather", 1972, 9.2, array("Crime", "Drama", "Thrille
         // implode converte array to string
         // echo "<div>Genres: " . implode(", ", $movie1->getGenres()) . "</div>";
 
-        echo "<h1>" . $movie1->title . "</h1>";
+        echo "<h2>" . $movie1->title . "</h2>";
         echo "<div>Year: " . $movie1->year . "</div>";
         echo "<div>Rating: " . $movie1->rating . "</div>";
         // implode converte array to string
         echo "<div>Genres: " . implode(", ", $movie1->genres) . "</div>";
-        echo "<div>Età: " . $movie1->calculateAge() . "</div>";
+        echo "<div>Età: " . $movie1->calculateAge() . " anni</div>";
         ?>
       </div>
-      <div class="col">
+      <div class=" col">
+        <img src="<?php echo $movie2->image ?>" alt="" class="movie2" style="width: 200px;">
         <?php
         // echo "<h1>" . $movie2->getTitle() . "</h1>";
         // echo "<div>Year: " . $movie2->getYear() . "</div>";
@@ -88,12 +93,12 @@ $movie2 = new Movie("The Godfather", 1972, 9.2, array("Crime", "Drama", "Thrille
         // implode converte array to string
         // echo "<div>Genres: " . implode(", ", $movie2->getGenres()) . "</div>";
 
-        echo "<h1>" . $movie2->title . "</h1>";
+        echo "<h2>" . $movie2->title . "</h2>";
         echo "<div>Year: " . $movie2->year . "</div>";
         echo "<div>Rating: " . $movie2->rating . "</div>";
         // implode converte array to string
         echo "<div>Genres: " . implode(", ", $movie2->genres) . "</div>";
-        echo "<div>Età: " . $movie2->calculateAge() . "</div>";
+        echo "<div>Età: " . $movie2->calculateAge() . " anni</div>";
         ?>
       </div>
     </div>
